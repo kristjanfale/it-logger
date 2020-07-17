@@ -1,0 +1,30 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Changed hard drive on WS 003",
+      "attention": "false",
+      "date": "17.07.2020",
+      "tech": "Bobo Smrade"
+    },
+    {
+      "id": 2,
+      "message": "Changed hard drive on WS 004",
+      "attention": "false",
+      "date": "17.07.2020",
+      "tech": "Gandalf"
+    },
+    {
+      "id": 3,
+      "message": "WS 001 not posting",
+      "attention": "true",
+      "date": "17.07.2020",
+      "tech": "Darth Vader"
+    }
+  ],
+  "techs": [
+    { "id": 1, "name": "Bobo Smrade" },
+    { "id": 2, "name": "Gandalf" },
+    { "id": 1, "name": "Darth Vader" }
+  ]
+}
