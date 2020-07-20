@@ -3,28 +3,41 @@
     {
       "id": 1,
       "message": "Changed hard drive on WS 003",
-      "attention": "false",
-      "date": "17.07.2020",
+      "attention": false,
+      "date": "20.07.2020, 11:22",
       "tech": "Bobo Smrade"
     },
     {
       "id": 2,
-      "message": "Changed hard drive on WS 004",
-      "attention": "false",
-      "date": "17.07.2020",
-      "tech": "Gandalf"
+      "message": "WS 004 repaired",
+      "attention": false,
+      "date": "20.07.2020, 12:00",
+      "tech": "Gandalf the White"
     },
     {
       "id": 3,
       "message": "WS 001 not posting",
-      "attention": "true",
-      "date": "17.07.2020",
+      "attention": true,
+      "date": "23.07.2020, 15:59",
       "tech": "Darth Vader"
     }
   ],
   "techs": [
-    { "id": 1, "name": "Bobo Smrade" },
-    { "id": 2, "name": "Gandalf" },
-    { "id": 1, "name": "Darth Vader" }
+    {
+      "id": 1,
+      "name": "Bobo Smrade"
+    },
+    {
+      "id": 2,
+      "name": "Gandalf"
+    },
+    {
+      "id": 3,
+      "name": "Darth Vader"
+    },
+    {
+      "id": 4,
+      "name": "Willy Wonka"
+    }
   ]
 }
