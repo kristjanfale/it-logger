@@ -6,6 +6,7 @@
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
+  --clr-green: rgb(58, 170, 26);
 }
 
 * {
@@ -49,18 +50,17 @@ body {
 
 .search-input {
   font-size: 1.8rem;
-  border: none;
-  border-radius: 1.5rem;
+  border: 0.2rem solid #000;
   padding: 1rem 3rem;
   width: 100%;
   background-color: #000;
-  color: #fff;
+  color: var(--clr-green);
 }
 
 .search-input:focus,
 .search-input:active {
   outline: none;
-  background-color: rgb(36, 121, 10);
+  border-bottom: 0.2rem solid var(--clr-green);
 }
 
 .search-label {
@@ -74,9 +74,11 @@ body {
   position: relative;
   width: 1.6rem;
   height: 1.6rem;
-  border: 0.2rem solid #fff;
+  border: 0.2rem solid var(--clr-green);
   border-radius: 100%;
   margin-top: -0.425rem;
+  transition: all 200ms ease-in;
+  cursor: pointer;
 }
 
 .search-icon:after {
@@ -84,11 +86,15 @@ body {
   width: 0.2rem;
   height: 1rem;
   border-radius: 0.3rem;
-  background: #fff;
+  background: var(--clr-green);
   position: absolute;
   top: 1rem;
   left: 1.2rem;
   transform: rotate(-45deg);
+}
+
+.search-icon:hover {
+  transform: scale(1.2);
 }
 
 /* LOGS */
@@ -131,4 +137,105 @@ body {
 .logs-details span:nth-child(2) {
   margin-right: auto;
   margin-left: 1rem;
+}
+
+/* BUTTONS */
+
+.buttons {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.buttons a {
+  display: inline-block;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 0.1rem solid #000;
+  transition: all 200ms ease-in;
+}
+
+.buttons a:hover {
+  transform: scale(1.2);
+  box-shadow: 0.1rem 0.1rem 0.4rem #000;
+}
+
+.buttons a:not(:last-child) {
+  margin-right: 3rem;
+}
+
+/* Add Log */
+.add-log {
+  position: relative;
+}
+
+.add-log:before,
+.add-log:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--clr-green);
+  border-radius: 1rem;
+}
+
+.add-log:before {
+  height: 2.8rem;
+  width: 0.2rem;
+}
+
+.add-log:after {
+  height: 0.2rem;
+  width: 2.8rem;
+}
+
+/* Add Tech */
+/* List Techs */
+.add-tech {
+  position: relative;
+  background: linear-gradient(to left, var(--clr-green) 2rem, transparent)
+      no-repeat 2.6rem 1.9rem/1.4rem 0.2rem,
+    linear-gradient(to bottom, var(--clr-green) 2rem, transparent) no-repeat
+      3.2rem 1.3rem/0.2rem 1.4rem;
+}
+
+.list-techs {
+  position: relative;
+  background: linear-gradient(to left, var(--clr-green) 2rem, transparent)
+      no-repeat 2.6rem 1.9rem/ 1.4rem 0.2rem,
+    linear-gradient(to left, var(--clr-green) 2rem, transparent) no-repeat
+      2.6rem 1.5rem/ 1.4rem 0.2rem,
+    linear-gradient(to left, var(--clr-green) 2rem, transparent) no-repeat
+      2.6rem 2.3rem/ 1.4rem 0.2rem;
+}
+
+.add-tech:before,
+.add-tech:after,
+.list-techs:before,
+.list-techs:after {
+  content: '';
+  position: absolute;
+  border: 0.2rem solid var(--clr-green);
+}
+
+.add-tech:before,
+.list-techs:before {
+  top: 0.7rem;
+  left: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+}
+
+.add-tech:after,
+.list-techs:after {
+  top: 50%;
+  left: 0.7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-bottom: none;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }

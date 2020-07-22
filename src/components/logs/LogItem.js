@@ -9,7 +9,7 @@ const LogItem = ({ log }) => {
       <a
         href='#edit-log-moadl'
         className='logs-link'
-        style={{ color: `${attention ? 'red' : 'rgb(36, 121, 10)'}` }}
+        style={{ color: `${attention ? 'red' : 'rgb(58, 170, 26)'}` }}
       >
         {message}
       </a>
