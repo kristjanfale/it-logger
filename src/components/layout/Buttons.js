@@ -73,11 +73,11 @@ const Buttons = () => {
 const modalStyle = {
   content: {
     // position: 'absolute',
-    top: '10%',
+    top: '15%',
     left: '10%',
     right: '10%',
-    bottom: '10%',
-    // border: '1px solid #ccc',
+    bottom: '15%',
+    border: '1px solid #000',
     // background: '#fff',
     // overflow: 'auto',
     // WebkitOverflowScrolling: 'touch',
