@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const AddLogModal = () => {
-  const [description, setDescription] = useState('');
-  const [attention, setAttention] = useState(false);
-  const [tech, setTech] = useState('');
+const EditLogModal = ({ log }) => {
+  const [description, setDescription] = useState(log.message);
+  const [attention, setAttention] = useState(log.attention);
+  const [tech, setTech] = useState(log.tech);
 
   const onSubmit = () => {
     console.log(description, attention, tech);
@@ -18,7 +18,7 @@ const AddLogModal = () => {
 
   return (
     <div className='modal'>
-      <h2 className='modal-title'>Add New Log</h2>
+      <h2 className='modal-title'>Edit Log</h2>
 
       <form className='modal-form'>
         <label htmlFor='description' className='modal-label'>
@@ -47,9 +47,9 @@ const AddLogModal = () => {
         >
           <option value=''>Select a Technician</option>
 
-          <option value='Kr neke'>Kr neke</option>
-          <option value='Hard coded...'>Hard coded...</option>
-          <option value='Slabbb'>Slabbb</option>
+          <option value='Bobo Smrade'>Bobo Smrade</option>
+          <option value='Gandalf'>Gandalf</option>
+          <option value='Darth Vader'>Darth Vader</option>
         </select>
 
         <label htmlFor='attention' className='modal-label'>
@@ -70,11 +70,11 @@ const AddLogModal = () => {
         </label>
 
         <a href='#!' onClick={onSubmit} className='modal-submit'>
-          Add log
+          Edit log
         </a>
       </form>
     </div>
   );
 };
 
-export default AddLogModal;
+export default EditLogModal;

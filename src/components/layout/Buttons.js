@@ -14,24 +14,24 @@ const Buttons = () => {
 
   return (
     <div className='buttons'>
-      <a
+      <div
         className='add-log'
         onClick={() => {
           setModalAddLog(true);
         }}
-      ></a>
-      <a
+      ></div>
+      <div
         className='add-tech'
         onClick={() => {
           setModalAddTech(true);
         }}
-      ></a>
-      <a
+      ></div>
+      <div
         className='list-techs'
         onClick={() => {
           setModalListTechs(true);
         }}
-      ></a>
+      ></div>
 
       {/* MODALS */}
       {/* Add Log Modal */}
@@ -72,26 +72,11 @@ const Buttons = () => {
 
 const modalStyle = {
   content: {
-    // position: 'absolute',
     top: '15%',
     left: '10%',
     right: '10%',
     bottom: '15%',
-    border: '1px solid #000',
-    // background: '#fff',
-    // overflow: 'auto',
-    // WebkitOverflowScrolling: 'touch',
-    // borderRadius: '4px',
-    // outline: 'none',
-    // padding: '20px'
-    // },
-    // overlay: {
-    //   position: 'fixed',
-    //   top: 0,
-    //   left: 0,
-    //   right: 0,
-    //   bottom: 0,
-    //   backgroundColor: 'rgba(255, 255, 255, 0.75)'
+    border: '0.1rem solid #000',
   },
 };
 

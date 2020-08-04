@@ -1,19 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import TechItem from '../techs/TechItem';
 
 const ListTechsModal = () => {
-  // const [message, setMessage] = useState('');
-  // const [attention, setAttention] = useState(false);
-  // const [tech, setTech] = useState('');
+  const [techs, setTechs] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getTechs();
+    // eslint-disable-next-line
+  }, []);
+
+  const getTechs = async () => {
+    setLoading(true);
+
+    const res = await fetch('http://localhost:5000/techs');
+    const data = await res.json();
+    console.log(data);
+
+    setTechs(data);
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <h2 className='loading'>Loading...</h2>;
+  }
 
   return (
-    <div>
-      <form>
-        <h2>List Techs </h2>
-        <input type='text' />
-        <br />
-        <p>sff</p>
-        <input type='text' />
-      </form>
+    <div className='modal'>
+      <h2 className='modal-title'>Technicians</h2>
+
+      <ul className='tech-list'>
+        {techs.length === 0 ? (
+          <p>No techs to show...</p>
+        ) : (
+          techs.map((tech) => <TechItem key={tech.id} tech={tech} />)
+        )}
+      </ul>
     </div>
   );
 };

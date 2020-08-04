@@ -118,12 +118,29 @@ body {
 .logs-item {
   padding: 1rem 0;
   border-top: 0.1rem solid #000;
+  position: relative;
 }
 
 .logs-link {
   font-weight: var(--fw-medium);
   font-size: 1.6rem;
   text-decoration: none;
+}
+
+.logs-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.logs-delete:active,
+.logs-delete:focus {
+  outline: none;
 }
 
 .logs-details {
@@ -146,21 +163,24 @@ body {
   transform: translateX(-50%);
 }
 
-.buttons a {
+.buttons > div {
   display: inline-block;
   width: 4.4rem;
   height: 4.4rem;
   border: 0.1rem solid #000;
+  border-radius: 0.4rem;
   transition: all 200ms ease-in;
   background-color: var(--clr-green);
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
-.buttons a:hover {
+.buttons > div:hover {
   transform: scale(1.2);
   box-shadow: 0.1rem 0.1rem 0.4rem #000;
 }
 
-.buttons a:not(:last-child) {
+.buttons > div:not(:last-child) {
   margin-right: 3rem;
 }
 
@@ -248,7 +268,7 @@ body {
 .modal-title {
   font-size: 3rem;
   padding-bottom: 0.2rem;
-  margin-bottom: 1.5rem;
+  margin: 2rem 0;
   border-bottom: 0.2rem solid #000;
 }
 
@@ -325,4 +345,56 @@ body {
 .modal-checkbox input:checked + span:before,
 .modal-checkbox input:checked + span:after {
   opacity: 1;
+}
+
+.modal-submit {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: var(--clr-green);
+  font-weight: var(--fw-medium);
+  margin-top: 3rem;
+  border: 0.2rem solid var(--clr-green);
+  border-radius: 0.4rem;
+  padding: 1rem 2rem;
+  transition: all 150ms ease-in;
+}
+
+.modal-submit:hover {
+  color: #000;
+  background-color: var(--clr-green);
+  border: 0.2rem solid #000;
+}
+
+.tech-list {
+  list-style: none;
+  width: min(100%, 40rem);
+}
+
+.tech-item {
+  color: rgb(78, 78, 78);
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 1rem;
+  border-top: 0.1rem solid #000;
+}
+
+.tech-name {
+  color: #000;
+  font-weight: var(--fw-medium);
+}
+
+.tech-delete {
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.tech-delete:active,
+.tech-delete:focus {
+  outline: none;
 }
