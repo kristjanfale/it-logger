@@ -1,28 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getLogs } from '../../actions/logActions';
 
 import LogItem from './LogItem';
 
-const Logs = () => {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const Logs = ({ logs, loading, getLogs }) => {
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-
-    const res = await fetch('http://localhost:5000/logs');
-    const data = await res.json();
-    console.log(data);
-
-    setLogs(data);
-    setLoading(false);
-  };
-
-  if (loading) {
+  if (loading || logs === null) {
     return <h2 className='loading'>Loading...</h2>;
   }
 
@@ -40,4 +29,16 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  logs: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
+
+// If u want to get anything from the App Level State and bring it in the Component, u bring it in as a prop
+const mapStateToProps = (state) => ({
+  // Get props from logReducer's initialState
+  logs: state.logReducer.logs,
+  loading: state.logReducer.loading,
+});
+
+export default connect(mapStateToProps, { getLogs })(Logs);

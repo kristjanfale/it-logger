@@ -1,6 +1,6 @@
 import { GET_LOGS, SET_LOADING, LOGS_ERROR } from './types';
 
-// Get logs
+// Get logs from server
 export const getLogs = () => {
   // Thunk allows us to return a function, not an object (used for async)
   return async (dispatch) => {
