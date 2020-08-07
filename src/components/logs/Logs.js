@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getLogs } from '../../actions/logActions';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchLogs } from '../../slices/logSlice';
 
 import LogItem from './LogItem';
 
-const Logs = ({ logs, loading, getLogs }) => {
+const Logs = () => {
+  // useDispatch is for dispatching actions
+  const dispatch = useDispatch();
+
+  // The function below is called a selector and allows us to select a value from
+  // the state. Selectors can also be defined inline where they're used instead of
+  // in the slice file. For example: `useSelector((state) => state.counter.value)`
+  const log = useSelector((state) => state.log);
+  const { logs, loading } = log;
+
   useEffect(() => {
-    getLogs();
+    dispatch(fetchLogs());
     // eslint-disable-next-line
   }, []);
 
@@ -29,16 +37,4 @@ const Logs = ({ logs, loading, getLogs }) => {
   );
 };
 
-Logs.propTypes = {
-  logs: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
-
-// If u want to get anything from the App Level State and bring it in the Component, u bring it in as a prop
-const mapStateToProps = (state) => ({
-  // Get props from logReducer's initialState
-  logs: state.logReducer.logs,
-  loading: state.logReducer.loading,
-});
-
-export default connect(mapStateToProps, { getLogs })(Logs);
+export default Logs;

@@ -1,17 +1,9 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
+import logReducer from './slices/logSlice';
 
-import combineReducers from './reducers';
-
-const initialState = {};
-
-const middleware = [thunk];
-
-const store = createStore(
-  combineReducers,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
-
-export default store;
+// configureStore function already sets redux-thunk up for us automatically
+export default configureStore({
+  reducer: {
+    log: logReducer,
+  },
+});
