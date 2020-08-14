@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  logs: null,
+  current: null,
+  loading: false,
+  error: null,
+};
+
 // createSlice function takes care of the work of generating action type strings, action creator functions, and action objects
 
 // createSlice automatically generates action creators with the same names as the reducer functions we wrote
@@ -13,12 +20,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const logSlice = createSlice({
   name: 'log',
-  initialState: {
-    logs: null,
-    current: null,
-    loading: false,
-    error: null,
-  },
+  initialState: initialState,
   reducers: {
     getLogs: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
