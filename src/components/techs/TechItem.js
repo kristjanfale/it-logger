@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { deleteTech } from '../../slices/techSlice';
 
 const TechItem = ({ tech }) => {
   const { id, name } = tech;
+
+  const dispatch = useDispatch();
+
+  const onDelete = () => {
+    dispatch(deleteTech(id));
+  };
 
   return (
     <li className='tech-item'>
@@ -11,7 +20,9 @@ const TechItem = ({ tech }) => {
       </p>
 
       {/* DELETE BUTTON */}
-      <button className='tech-delete'>X</button>
+      <button className='tech-delete' onClick={onDelete}>
+        X
+      </button>
     </li>
   );
 };

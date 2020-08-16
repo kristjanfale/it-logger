@@ -19,21 +19,24 @@ const initialState = {
       name: 'Willy Wonka',
     },
   ],
-  loading: false,
-  error: null,
 };
 
 const techSlice = createSlice({
-  name: 'techs',
+  name: 'tech',
   initialState: initialState,
   reducers: {
+    // Add new Technician
     addTech(state, action) {
       state.techs.push(action.payload);
+    },
+    // Delete Technician
+    deleteTech(state, action) {
+      state.techs = state.techs.filter((tech) => tech.id !== action.payload);
     },
   },
 });
 
 // Export "actions creastors" (createSlice automatically generates an "action creator" function with the same name as reducer functions)
-export const { addTech } = techSlice.actions;
+export const { addTech, deleteTech } = techSlice.actions;
 
 export default techSlice.reducer;

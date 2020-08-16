@@ -6,11 +6,7 @@ import TechItem from '../techs/TechItem';
 const ListTechsModal = () => {
   // React components can read data from the Redux store using the useSelector hook
   const tech = useSelector((state) => state.tech);
-  const { techs, loading } = tech;
-
-  if (loading) {
-    return <h2 className='loading'>Loading...</h2>;
-  }
+  const { techs } = tech;
 
   return (
     <div className='modal'>
@@ -18,7 +14,7 @@ const ListTechsModal = () => {
 
       <ul className='tech-list'>
         {techs.length === 0 ? (
-          <p>No techs to show...</p>
+          <h2>No techs to show...</h2>
         ) : (
           techs.map((tech) => <TechItem key={tech.id} tech={tech} />)
         )}
