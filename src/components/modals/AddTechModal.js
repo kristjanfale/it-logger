@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
-const AddTechModal = ({ closeModal }) => {
+import { addTech } from '../../slices/techSlice';
+
+const AddTechModal = () => {
   const [name, setName] = useState('');
 
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
-    console.log(name);
+    if (name) {
+      dispatch(
+        addTech({
+          id: nanoid(),
+          name,
+        })
+      );
+    }
 
     // Clear form
     setName('');
 
-    // Close modal
+    //! Close MODAL
   };
 
   return (

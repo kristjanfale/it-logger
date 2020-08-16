@@ -7,7 +7,7 @@ const TechItem = ({ tech }) => {
   return (
     <li className='tech-item'>
       <p>
-        ID: {id} <span className='tech-name'>{name}</span>
+        <span className='tech-name'>{name}</span>
       </p>
 
       {/* DELETE BUTTON */}

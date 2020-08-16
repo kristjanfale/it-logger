@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import TechItem from '../techs/TechItem';
 
 const ListTechsModal = () => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getTechs();
-    // eslint-disable-next-line
-  }, []);
-
-  const getTechs = async () => {
-    setLoading(true);
-
-    const res = await fetch('http://localhost:5000/techs');
-    const data = await res.json();
-    console.log(data);
-
-    setTechs(data);
-    setLoading(false);
-  };
+  // React components can read data from the Redux store using the useSelector hook
+  const tech = useSelector((state) => state.tech);
+  const { techs, loading } = tech;
 
   if (loading) {
     return <h2 className='loading'>Loading...</h2>;

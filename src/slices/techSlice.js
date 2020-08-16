@@ -1,15 +1,39 @@
-import { createSlice, createStore } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  techs: [],
-  //   loading: false,
-  //   error: null,
+  techs: [
+    {
+      id: 1,
+      name: 'Bobo Smrade',
+    },
+    {
+      id: 2,
+      name: 'Gandalf the White',
+    },
+    {
+      id: 3,
+      name: 'Darth Vader',
+    },
+    {
+      id: 4,
+      name: 'Willy Wonka',
+    },
+  ],
+  loading: false,
+  error: null,
 };
 
-const techsSlice = createSlice({
+const techSlice = createSlice({
   name: 'techs',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    addTech(state, action) {
+      state.techs.push(action.payload);
+    },
+  },
 });
 
-export default techsSlice.reducer;
+// Export "actions creastors" (createSlice automatically generates an "action creator" function with the same name as reducer functions)
+export const { addTech } = techSlice.actions;
+
+export default techSlice.reducer;
