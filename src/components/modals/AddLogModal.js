@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addNewLog } from '../../slices/logSlice';
 
 const AddLogModal = () => {
   const [description, setDescription] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
+  const dispatch = useDispatch();
+
+  // Get number of logs (for new log's ID)
+  const logs = useSelector((state) => state.log.logs);
+  const logId = logs.length + 1;
+
   const onSubmit = () => {
-    console.log(description, attention, tech);
+    if (description && tech) {
+      dispatch(
+        addNewLog({
+          id: logId,
+          message: description,
+          attention,
+          tech,
+        })
+      );
+    }
 
     // Clear form
     setDescription('');
     setAttention(false);
     setTech('');
 
-    // Close modal
+    //! Close modal
   };
 
   return (
