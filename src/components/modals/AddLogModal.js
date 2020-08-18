@@ -24,6 +24,7 @@ const AddLogModal = () => {
           message: description,
           attention,
           tech,
+          date: new Date().toLocaleString(),
         })
       );
     }
@@ -67,7 +68,9 @@ const AddLogModal = () => {
         >
           <option value=''>Select a Technician</option>
           {techs.map((tech) => (
-            <option value={tech.name}>{tech.name}</option>
+            <option value={tech.name} key={tech.id}>
+              {tech.name}
+            </option>
           ))}
         </select>
 

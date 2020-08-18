@@ -4,21 +4,21 @@
       "id": 1,
       "message": "Changed hard drive on WS 003",
       "attention": false,
-      "date": "20.07.2020, 11:22",
+      "date": "8/09/2020, 9:56:22 AM",
       "tech": "Bobo Smrade"
     },
     {
       "id": 2,
       "message": "WS 004 repaired",
       "attention": false,
-      "date": "20.07.2020, 12:00",
+      "date": "8/10/2020, 5:27:35 PM",
       "tech": "Gandalf the White"
     },
     {
       "id": 3,
       "message": "WS 001 not posting",
       "attention": true,
-      "date": "23.07.2020, 15:59",
+      "date": "8/15/2020, 9:45:15 PM",
       "tech": "Darth Vader"
     }
   ],

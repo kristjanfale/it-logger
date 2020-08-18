@@ -33,6 +33,9 @@ export const logSlice = createSlice({
     addNewLog(state, action) {
       state.logs.push(action.payload);
     },
+    deleteLog(state, action) {
+      state.logs = state.logs.filter((log) => log.id !== action.payload);
+    },
     setLoading: (state) => {
       state.loading = true;
     },
@@ -42,7 +45,13 @@ export const logSlice = createSlice({
   },
 });
 
-export const { getLogs, addNewLog, setLoading, logsError } = logSlice.actions;
+export const {
+  getLogs,
+  addNewLog,
+  deleteLog,
+  setLoading,
+  logsError,
+} = logSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

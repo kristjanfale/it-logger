@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import EditLogModal from '../modals/EditLogModal';
+import { deleteLog } from '../../slices/logSlice';
 
 Modal.setAppElement('#root');
 
 const LogItem = ({ log }) => {
+  const { id, message, attention, date, tech } = log;
+
   const [modalEditLog, setModalEditLog] = useState(false);
 
-  const { id, message, attention, date, tech } = log;
+  const dispatch = useDispatch();
+
+  const onDelete = () => {
+    dispatch(deleteLog(id));
+  };
 
   return (
     <li className='logs-item'>
@@ -23,7 +31,9 @@ const LogItem = ({ log }) => {
       >
         {message}
       </a>
-      <button className='logs-delete'>X</button>
+      <button className='logs-delete' onClick={onDelete}>
+        X
+      </button>
       <p className='logs-details'>
         <span>
           ID: <strong>{id}</strong>
