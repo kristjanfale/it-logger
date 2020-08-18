@@ -10,12 +10,14 @@ const AddLogModal = () => {
 
   const dispatch = useDispatch();
 
-  // Get number of logs (for new log's ID)
   const logs = useSelector((state) => state.log.logs);
+  const techs = useSelector((state) => state.tech.techs);
+
+  // Get number of logs (for new log's ID)
   const logId = logs.length + 1;
 
   const onSubmit = () => {
-    if (description && tech) {
+    if (description && tech !== '') {
       dispatch(
         addNewLog({
           id: logId,
@@ -64,10 +66,9 @@ const AddLogModal = () => {
           className='modal-input'
         >
           <option value=''>Select a Technician</option>
-
-          <option value='Kr neke'>Kr neke</option>
-          <option value='Hard coded...'>Hard coded...</option>
-          <option value='Slabbb'>Slabbb</option>
+          {techs.map((tech) => (
+            <option value={tech.name}>{tech.name}</option>
+          ))}
         </select>
 
         <label htmlFor='attention' className='modal-label'>
