@@ -36,6 +36,7 @@ export const logSlice = createSlice({
     deleteLog(state, action) {
       state.logs = state.logs.filter((log) => log.id !== action.payload);
     },
+    editLog(state, action) {},
     setLoading: (state) => {
       state.loading = true;
     },

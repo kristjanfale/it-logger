@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 import { addNewLog } from '../../slices/logSlice';
 
-const AddLogModal = () => {
+const AddLogModal = ({ closeModal }) => {
   const [description, setDescription] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
   const dispatch = useDispatch();
 
-  const logs = useSelector((state) => state.log.logs);
   const techs = useSelector((state) => state.tech.techs);
-
-  // Get number of logs (for new log's ID)
-  const logId = logs.length + 1;
 
   const onSubmit = () => {
     if (description && tech !== '') {
       dispatch(
         addNewLog({
-          id: logId,
+          id: nanoid(),
           message: description,
           attention,
           tech,
@@ -34,7 +31,8 @@ const AddLogModal = () => {
     setAttention(false);
     setTech('');
 
-    //! Close modal
+    // Close modal
+    closeModal();
   };
 
   return (

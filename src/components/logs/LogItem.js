@@ -36,9 +36,6 @@ const LogItem = ({ log }) => {
       </button>
       <p className='logs-details'>
         <span>
-          ID: <strong>{id}</strong>
-        </span>
-        <span>
           Last updated by: <strong>{tech}</strong>
         </span>
         <span>{date}</span>

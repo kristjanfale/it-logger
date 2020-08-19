@@ -150,7 +150,7 @@ body {
   display: flex;
 }
 
-.logs-details span:nth-child(2) {
+.logs-details span:nth-child(1) {
   margin-right: auto;
   margin-left: 1rem;
 }

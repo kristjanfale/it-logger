@@ -12,6 +12,11 @@ const Buttons = () => {
   const [modalAddTech, setModalAddTech] = useState(false);
   const [modalListTechs, setModalListTechs] = useState(false);
 
+  const closeModal = () => {
+    setModalAddLog(false);
+    setModalAddTech(false);
+  };
+
   return (
     <div className='buttons'>
       <div
@@ -42,7 +47,7 @@ const Buttons = () => {
         }}
         style={modalStyle}
       >
-        <AddLogModal />
+        <AddLogModal closeModal={closeModal} />
       </Modal>
 
       {/* Add Tech Modal */}
@@ -53,7 +58,7 @@ const Buttons = () => {
         }}
         style={modalStyle}
       >
-        <AddTechModal />
+        <AddTechModal closeModal={closeModal} />
       </Modal>
 
       {/* List Techs Modal */}

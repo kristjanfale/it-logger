@@ -4,7 +4,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { addTech } from '../../slices/techSlice';
 
-const AddTechModal = () => {
+const AddTechModal = ({ closeModal }) => {
   const [name, setName] = useState('');
 
   const dispatch = useDispatch();
@@ -22,7 +22,8 @@ const AddTechModal = () => {
     // Clear form
     setName('');
 
-    //! Close MODAL
+    // Close MODAL
+    closeModal();
   };
 
   return (
