@@ -36,7 +36,11 @@ export const logSlice = createSlice({
     deleteLog(state, action) {
       state.logs = state.logs.filter((log) => log.id !== action.payload);
     },
-    editLog(state, action) {},
+    editLog(state, action) {
+      state.logs = state.logs.map((log) =>
+        log.id === action.payload.id ? action.payload : log
+      );
+    },
     setLoading: (state) => {
       state.loading = true;
     },
@@ -50,6 +54,7 @@ export const {
   getLogs,
   addNewLog,
   deleteLog,
+  editLog,
   setLoading,
   logsError,
 } = logSlice.actions;

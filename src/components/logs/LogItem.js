@@ -13,6 +13,10 @@ const LogItem = ({ log }) => {
 
   const [modalEditLog, setModalEditLog] = useState(false);
 
+  const closeModal = () => {
+    setModalEditLog(false);
+  };
+
   const dispatch = useDispatch();
 
   const onDelete = () => {
@@ -49,7 +53,7 @@ const LogItem = ({ log }) => {
         }}
         style={modalStyle}
       >
-        <EditLogModal log={log} />
+        <EditLogModal log={log} closeModal={closeModal} />
       </Modal>
     </li>
   );

@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-const EditLogModal = ({ log }) => {
+import { editLog } from '../../slices/logSlice';
+
+const EditLogModal = ({ log, closeModal }) => {
   const [description, setDescription] = useState(log.message);
   const [attention, setAttention] = useState(log.attention);
   const [tech, setTech] = useState(log.tech);
 
+  const techs = useSelector((state) => state.tech.techs);
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
-    console.log(description, attention, tech);
+    if (description && tech !== '') {
+      dispatch(
+        editLog({
+          id: log.id,
+          message: description,
+          attention,
+          tech,
+          date: new Date().toLocaleString(),
+        })
+      );
+    }
 
     // Clear form
     setDescription('');
@@ -14,6 +30,7 @@ const EditLogModal = ({ log }) => {
     setTech('');
 
     // Close modal
+    closeModal();
   };
 
   return (
@@ -46,10 +63,11 @@ const EditLogModal = ({ log }) => {
           className='modal-input'
         >
           <option value=''>Select a Technician</option>
-
-          <option value='Bobo Smrade'>Bobo Smrade</option>
-          <option value='Gandalf'>Gandalf</option>
-          <option value='Darth Vader'>Darth Vader</option>
+          {techs.map((tech) => (
+            <option value={tech.name} key={tech.id}>
+              {tech.name}
+            </option>
+          ))}
         </select>
 
         <label htmlFor='attention' className='modal-label'>
