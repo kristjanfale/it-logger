@@ -35,6 +35,9 @@ export const logSlice = createSlice({
     },
     deleteLog(state, action) {
       state.logs = state.logs.filter((log) => log.id !== action.payload);
+      state.filtered = state.filtered.filter(
+        (log) => log.id !== action.payload
+      );
     },
     editLog(state, action) {
       state.logs = state.logs.map((log) =>
