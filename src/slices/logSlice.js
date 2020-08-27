@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   logs: null,
-  current: null,
+  filtered: [],
   loading: false,
   error: null,
 };
@@ -40,6 +40,20 @@ export const logSlice = createSlice({
       state.logs = state.logs.map((log) =>
         log.id === action.payload.id ? action.payload : log
       );
+      state.filtered = state.filtered.map((log) =>
+        log.id === action.payload.id ? action.payload : log
+      );
+    },
+    filterLogs(state, action) {
+      state.filtered = state.logs.filter((log) => {
+        // With regular expresion we just want to match the text
+        const regex = new RegExp(`${action.payload}`, 'gi'); // 'gi' - global and case-sensitive
+        // Match message OR tech of the log with the regular expresion
+        return log.message.match(regex) || log.tech.match(regex); // This will return anything where the message OR tech matches the text, that is passed in
+      });
+    },
+    clearFilterLogs(state) {
+      state.filtered = [];
     },
     setLoading: (state) => {
       state.loading = true;
@@ -55,6 +69,8 @@ export const {
   addNewLog,
   deleteLog,
   editLog,
+  filterLogs,
+  clearFilterLogs,
   setLoading,
   logsError,
 } = logSlice.actions;
